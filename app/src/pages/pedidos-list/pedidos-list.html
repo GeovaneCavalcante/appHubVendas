@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="roxo">
+    <ion-title>Pedidos</ion-title>
+  </ion-navbar>
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="filterOrders($event)"
+    (ionCancel)="onCancel($event)"
+    placeholder="Pesquisa"
+  >
+  </ion-searchbar >
+  
+</ion-header>
+
+
+<ion-content class="bg">
+  <ion-fab bottom right (click)="pedidosCreate()">
+      <button ion-fab mini color="danger"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div class="list" *ngFor="let pedido of pedidos" (click)="presentActionSheet(pedido)">
+    <div class="icon_list">
+      <ion-icon name="basket"></ion-icon>
+    </div>
+    <span *ngIf="pedido.status == 0">Em andamento</span>
+    <span *ngIf="pedido.status == 1">Concluído</span>
+    <span *ngIf="pedido.status == 2">Cancelado</span>
+    <h1>Pedido Nº {{pedido.id}}</h1>
+    <p>Cliente: {{pedido.client_name}}</p>
+  </div>
+</ion-content>

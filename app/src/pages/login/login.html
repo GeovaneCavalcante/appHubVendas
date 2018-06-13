@@ -1,0 +1,23 @@
+<ion-header>
+</ion-header>
+<ion-content class="content">
+  <div class="title"> <ion-icon name="ios-contact"></ion-icon> Autenticação </div>
+  <div class="content-div">  
+    <form [formGroup]="loginForm" (ngSubmit)="singIn(); $event.preventDefault()">
+      <ion-list>
+        <ion-item>
+          <ion-label fixed><ion-icon style="margin-right: 5px" name="md-mail"></ion-icon> E-mail</ion-label>
+          <ion-input autocapitalize="none" formControlName="email" [(ngModel)]="email" name="email" type="email" value=""></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label fixed><ion-icon style="margin-right: 5px" name="md-key"></ion-icon> Senha</ion-label>
+          <ion-input formControlName="password" [(ngModel)]="password" name="password" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <div padding>
+          <button  class="button-login" ion-button block color="roxo"  type="submit">Login <ion-icon style="margin-left: 3px" name="md-log-in"></ion-icon></button>
+      </div>
+    </form>
+  </div>
+</ion-content>
